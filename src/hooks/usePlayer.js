@@ -23,7 +23,7 @@ export const usePlayer = () => {
 
         while (checkCollision(clonedPlayer, stage, { x: 0, y: 0 })) {
             clonedPlayer.pos.x += offset
-            offset = -(offset - (offset * -1))
+            offset = -(offset + (offset > 0 ? 1 : -1))
             if (offset > clonedPlayer.tetromino[0].length) {
                 rotate(clonedPlayer.tetromino, -dir)
                 clonedPlayer.pos.x = pos
