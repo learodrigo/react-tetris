@@ -12,10 +12,10 @@ export const useStage = (player, resetPlayer) => {
             if (row.findIndex(cell => cell[0] === 0) === -1) {
                 setRowsCleared(prev => prev + 1)
                 acc.unshift(new Array(newStage[0].length).fill([0, 'clear']))
-            } else {
-                acc.push(row)
+                return acc
             }
 
+            acc.push(row)
             return acc
         }, [])
 
@@ -46,5 +46,5 @@ export const useStage = (player, resetPlayer) => {
         setStage(prev => updateStage(prev))
     }, [player, resetPlayer, rowsCleared])
 
-    return [stage, setStage]
+    return [stage, setStage, rowsCleared]
 }
